@@ -12,9 +12,9 @@ const payError = document.getElementById("payError");
 
 payform.onsubmit = (e) => {
     e.preventDefault();
-    isProcessing != isProcessing;
-
-    if (isProcessing) {
+    
+    if (!isProcessing) {
+        isProcessing != isProcessing;
         const formData = new FormData(payform);
         // console.log('e', formData);
         payForm = {};
