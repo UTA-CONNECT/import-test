@@ -15,19 +15,8 @@ payform.onsubmit = (e) => {
     
     if (!isProcessing) {
         isProcessing != isProcessing;
-        const formData = new FormData(payform);
-        // console.log('e', formData);
-        payForm = {};
-        
-        for (const formElement of formData) {
-            // console.log(formElement);
-            let [key, value] = formElement;
-            payForm[key] = value;
-          }
-    
-        console.log('payForm', payForm);
-    
-        importPay(payForm)
+        parseFormData(payform)
+        .then((payFormData) => importPay(payFormData))
         .then(rsp => {
             uniqueID.textContent = rsp.imp_uid;
             storeReceipt.textContent = rsp.merchant_uid;
@@ -43,6 +32,22 @@ payform.onsubmit = (e) => {
     } else {
         alert("다른 결제 건이 진행 중 입니다.");
     }
+}
+
+function parseFormData(formEle) {
+    return new Promise((resolve) => {
+        const formData = new FormData(formEle);
+        // console.log('e', formData);
+        payForm = {};
+        
+        for (const formElement of formData) {
+            // console.log(formElement);
+            let [key, value] = formElement;
+            payForm[key] = value;
+          }
+        
+        resolve(payForm);
+    });
 }
 
 function importPay(form) {
