@@ -4,7 +4,7 @@
 
 I'MPORT의 pg 연동을 이용한 간단 결제 페이지
 
-기타 사용 오픈소스
+## 기타 사용 오픈소스
 
 [Terminal.css 0.7.2](https://github.com/Gioni06/terminal.css)
 
