@@ -13,28 +13,36 @@ const payError = document.getElementById("payError");
 payform.onsubmit = (e) => {
     e.preventDefault();
     isProcessing != isProcessing;
-    const formData = new FormData(payform);
-    // console.log('e', formData);
-    payForm = {};
+
+    if (isProcessing) {
+        const formData = new FormData(payform);
+        // console.log('e', formData);
+        payForm = {};
+        
+        for (const formElement of formData) {
+            // console.log(formElement);
+            let [key, value] = formElement;
+            payForm[key] = value;
+          }
     
-    for (const formElement of formData) {
-        // console.log(formElement);
-        let [key, value] = formElement;
-        payForm[key] = value;
-      }
-
-    console.log('payForm', payForm);
-
-    importPay(payForm)
-    .then(rsp => {
-        uniqueID.textContent = rsp.imp_uid;
-        storeReceipt.textContent = rsp.merchant_uid;
-        cost.textContent = rsp.paid_amount;
-        cardNumber.textContent = rsp.apply_num;
-    })
-    .catch(rsp_err => {
-        payError.textContent = rsp_err.error_msg;
-    })
+        console.log('payForm', payForm);
+    
+        importPay(payForm)
+        .then(rsp => {
+            uniqueID.textContent = rsp.imp_uid;
+            storeReceipt.textContent = rsp.merchant_uid;
+            cost.textContent = rsp.paid_amount;
+            cardNumber.textContent = rsp.apply_num;
+    
+            isProcessing != isProcessing;
+        })
+        .catch(rsp_err => {
+            payError.textContent = rsp_err.error_msg;
+            isProcessing != isProcessing;
+        })
+    } else {
+        alert("다른 결제 건이 진행 중 입니다.");
+    }
 }
 
 function importPay(form) {
