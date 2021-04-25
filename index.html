@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="payform">
+        <div>상품명</div>
+        <input name="product_name" type="text" minlength="2" maxlength="10" placeholder="상품명" required value="캬루">
+        <div>구매자 이름</div>
+        <input name="buyer_name" type="text" minlength="2" maxlength="10" placeholder="구매자 이름" required value="페코린느">
+        <div>구매자 핸드폰 번호</div>
+        <input name="buyer_tel" type="text" minlength="5" maxlength="15" placeholder="010-1234-5678" required value="010-1234-5678">
+        <div>구매자 이메일</div>
+        <input name="buyer_email" type="email" minlength="2" maxlength="20" placeholder="구매자 이메일" required value="onaka@pekopeko.com">
+        <div>구매자 주소</div>
+        <input name="buyer_addr" type="text" minlength="2" maxlength="50" placeholder="구매자 주소" required value="렌도솔 길드하우스">
+        <div>구매자 우편번호</div>
+        <input name="buyer_postcode" type="text" minlength="5" maxlength="10" placeholder="구매자 우편번호" required value="123-456">
+        <div>구매 가격</div>
+        <input name="buyer_cost" type="number" min="1000" max="50000" placeholder="1000₩ ~ 50000₩" required value="1004"><br>
+        <input type="submit" value="야바위데수네">
+    </form>
+    <div>
+        Pay result
+    </div>
+    <div>
+        고유ID: <span id="uniqueID"></span>
+    </div>
+    <div>
+        상점 거래ID: <span id="storeReceipt"></span>
+    </div>
+    <div>
+        결제 금액: <span id="cost"></span>
+    </div>
+    <div>
+        카드 승인번호: <span id="cardNumber"></span>
+    </div>
+    <div>
+        에러내용: <span id="payError"></span>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
